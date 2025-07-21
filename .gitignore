@@ -1,5 +1,9 @@
 db.sqlite3
 
+#node.js dependencies
+node_modules/
+shop/static/css/output.css
+
 #Django
 __pycache__/
 *.py[cod]
