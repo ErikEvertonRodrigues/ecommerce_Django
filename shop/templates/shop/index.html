@@ -8,14 +8,16 @@
     <title>Document</title>
 </head>
 <body>
-    <main class="h-screen flex gap-1 p-2">
-        {% for product in products %}
-            <div class="border-1 p-1 border-gray-300 rounded-md h-[20em]">
-                <img class="h-[250px] w-[250px] object-contain  rounded-t-[5px]" src="{{ product.image }}" alt="{{ product.title }} image">
-                <p>{{ product.title }}</p>
-                <p>{{ product.price }}</p>
-            </div>
-        {% endfor %}
+    <main class="flex justify-center">
+        <section class="h-screen flex gap-1 p-1 m-auto">
+            {% for product in products %}
+                <div class="box-content border-1 p-5 border-gray-400 rounded-md h-[20em] flex flex-col justify-around">
+                    <img class="h-[250px] w-[250px] object-contain" src="{{ product.image }}" alt="{{ product.title }} image">
+                    <p class="font-black">{{ product.title }}</p>
+                    <p class="font-black text-green-700 text-lg">$ {{ product.price }}</p>
+                </div>
+            {% endfor %}
+        </section>
     </main>
 </body>
 </html>
