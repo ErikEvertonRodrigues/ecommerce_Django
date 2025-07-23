@@ -15,7 +15,7 @@
             <button class="bg-green-700 text-white px-4 rounded-md font-bold cursor-pointer" type="submit">Search</button>
         </form>
         <section class="max-w-[1224px] m-auto">
-            <div class="w-[100%] flex justify-between">
+            <div class="w-[100%] flex flex-wrap justify-between">
                 {% for product in products %}
                     <div class="box-content border-1 p-5 border-gray-400 rounded-md h-[20em] flex flex-col justify-around">
                         <img class="h-[250px] w-[250px] object-contain" src="{{ product.image }}" alt="{{ product.title }} image">
@@ -23,6 +23,21 @@
                         <p class="font-black text-green-700 text-lg">$ {{ product.price }}</p>
                     </div>
                 {% endfor %}
+            </div>
+            <div>
+                <ul>
+                    {% if products.has_previous %}
+                        <li><a href="?page={{ products.previous_page_number }}">Previous</a></li>
+                    {% endif %}
+
+                    <li>
+                        <a href="?page={{ products.number }}">Current</a>
+                    </li>
+
+                    {% if products.has_next %}
+                        <li><a href="?page={{ products.next_page_number }}">Next</a></li>
+                    {% endif %}
+                </ul>
             </div>
         </section>
     </main>

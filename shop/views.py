@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.core.paginator import Paginator
 
 from .models import Product
 # Create your views here.
@@ -10,5 +11,9 @@ def index(request):
 
     if item_name != '' and item_name is not None:
         products = products.filter(title__icontains=item_name)
+
+    paginator = Paginator(products, 4)
+    page = request.GET.get('page')
+    products = paginator.get_page(page)
 
     return render(request, 'shop/index.html', {'products': products})
