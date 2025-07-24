@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+</head>
+<body>
+    <main>
+        <section class="flex">
+            <div class="w-[50%]"> 
+                <img class="w-[400px] h-[400px] object-contain" src="{{ product.image }}" alt="Product image">
+            </div>
+            <div class="w-[50%]">
+                <h1>{{ product.title }}</h1>
+                <h2>{{ product.discount_price }}</h2>
+                <h3>{{ product.price }}</h3>
+                <h4>{{ product.description }}</h4>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
