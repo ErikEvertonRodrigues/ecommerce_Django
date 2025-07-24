@@ -21,6 +21,10 @@
                         <img class="h-[250px] w-[250px] object-contain" src="{{ product.image }}" alt="{{ product.title }} image">
                         <p class="font-black">{{ product.title }}</p>
                         <p class="font-black text-green-700 text-lg">$ {{ product.price }}</p>
+                        <div>
+                            <a href="/{{ product.id }}">View</a>
+                            <a href="#">Add to cart</a>  
+                        </div>
                     </div>
                 {% endfor %}
             </div>
