@@ -17,13 +17,13 @@
         <section class="max-w-[1224px] m-auto">
             <div class="w-[100%] flex flex-wrap justify-between">
                 {% for product in products %}
-                    <div class="box-content border-1 p-5 border-gray-400 rounded-md h-[20em] flex flex-col justify-around">
+                    <div class="box-content border-1 p-5 border-gray-400 rounded-md h-[380px] flex flex-col justify-around">
                         <img class="h-[250px] w-[250px] object-contain" src="{{ product.image }}" alt="{{ product.title }} image">
                         <p class="font-black">{{ product.title }}</p>
                         <p class="font-black text-green-700 text-lg">$ {{ product.price }}</p>
                         <div>
-                            <a href="/{{ product.id }}">View</a>
-                            <a href="#">Add to cart</a>  
+                            <a class="bg-amber-400 p-2 font-bold rounded-sm" href="/{{ product.id }}">View</a>
+                            <a class="bg-amber-400 p-2 font-bold rounded-sm" href="#">Add to cart</a>  
                         </div>
                     </div>
                 {% endfor %}
