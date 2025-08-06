@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/output.css' %}">
     <title>Document</title>
+    <script
+    src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
 </head>
 <body>
     <main class="p-1">
@@ -23,7 +27,7 @@
                         <p class="font-black text-green-700 text-lg">$ {{ product.price }}</p>
                         <div>
                             <a class="bg-amber-400 p-2 font-bold rounded-sm" href="/{{ product.id }}">View</a>
-                            <a class="bg-amber-400 p-2 font-bold rounded-sm" href="#">Add to cart</a>  
+                            <a id="{{ product.id }}" class="bg-amber-400 p-2 font-bold rounded-sm add-to-cart" href="#">Add to cart</a>  
                         </div>
                     </div>
                 {% endfor %}
@@ -46,4 +50,24 @@
         </section>
     </main>
 </body>
+<script>
+    if (localStorage.getItem('cart') === null) {
+        var cart = {};
+    } else {
+        cart = JSON.parse(localStorage.getItem('cart'));
+    }
+
+    $(document).on('click', '.add-to-cart', function() {
+        let item_id = this.id.toString();
+        console.log(item_id);
+
+        if (cart[item_id] != undefined) {
+            cart[item_id] += 1;
+        } else {
+            cart[item_id] = 1;
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }); 
+    
+</script>
 </html>
