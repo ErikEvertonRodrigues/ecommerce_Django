@@ -14,10 +14,15 @@
 <body>
     <header class="max-w-[1224px] m-auto">
         <nav class="h-[60px]">
-            <ul class="h-full flex items-center gap-1">
+            <ul class="h-full flex items-center gap-3">
                 <li><a class="font-bold text-2xl" href="#">Home</a></li>
                 <li><a class=" text-2xl" href="#">Features</a></li>
-                <li><a class=" text-2xl" id="cart" href="#">Cart</a></li>
+                <li>
+                    <a class="text-2xl bg-gray-500 p-1 rounded-md box-border" id="cart" href="#">Cart(0)</a>
+                    <div id="cart-popover" class="border rounded-md w-[200px] h-[50px] absolute bg-neutral-300 p-2 invisible">
+                        <p class="text-lg">This is your cart</p>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
@@ -78,6 +83,10 @@
 
         document.getElementById("cart").innerHTML = `Cart(${Object.keys(cart).length})`;
     }); 
+
+    $(document).on('click', '#cart', function() {
+        document.getElementById("cart-popover").classList.toggle("invisible");
+    })
     
 </script>
 </html>
