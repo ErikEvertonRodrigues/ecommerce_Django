@@ -18,9 +18,9 @@
                 <li><a class="font-bold text-2xl" href="#">Home</a></li>
                 <li><a class=" text-2xl" href="#">Features</a></li>
                 <li>
-                    <a class="text-2xl bg-gray-500 p-1 rounded-md box-border" id="cart" href="#">Cart(0)</a>
-                    <div id="cart-popover" class="border rounded-md w-[200px] h-[50px] absolute bg-neutral-300 p-2 invisible">
-                        <p class="text-lg">This is your cart</p>
+                    <a class="text-2xl bg-gray-500 p-1 rounded-md box-border" id="cart" href="#">Cart</a>
+                    <div id="cart-popover" class="border rounded-md w-[200px] absolute bg-neutral-300 p-2 invisible">
+                        <p id="popover-text" class="text-lg">This is your cart</p>
                     </div>
                 </li>
             </ul>
@@ -37,7 +37,7 @@
                 {% for product in products %}
                     <div class="box-content border-1 p-5 border-gray-400 rounded-md h-[380px] flex flex-col justify-around">
                         <img class="h-[250px] w-[250px] object-contain" src="{{ product.image }}" alt="{{ product.title }} image">
-                        <p class="font-black">{{ product.title }}</p>
+                        <p id="nm{{ product.id }}" class="font-black">{{ product.title }}</p>
                         <p class="font-black text-green-700 text-lg">$ {{ product.price }}</p>
                         <div>
                             <a class="bg-amber-400 p-2 font-bold rounded-sm" href="/{{ product.id }}">View</a>
@@ -82,11 +82,33 @@
         localStorage.setItem('cart', JSON.stringify(cart));
 
         document.getElementById("cart").innerHTML = `Cart(${Object.keys(cart).length})`;
+        DisplayCart(cart);
     }); 
 
     $(document).on('click', '#cart', function() {
         document.getElementById("cart-popover").classList.toggle("invisible");
     })
+
+    DisplayCart(cart);
+
+    function DisplayCart(cart) {
+        if (Object.keys(cart).length !== 0) {
+            let cartString = "";
+            cartString += ""
+            let cartIndex = 1;
+            for (let x in cart) {
+                cartString += cartIndex + " - ";
+                cartString += document.getElementById("nm"+x).innerHTML + " Qty:" + cart[x] + "</br>";
+                cartIndex++;
+            }
+            document.getElementById("popover-text").innerHTML = cartString;
+        }
+    }
+
+    updateCartQuantity(cart)
+    function updateCartQuantity(cart) {
+        document.getElementById("cart").innerHTML = `Cart(${Object.keys(cart).length})`;
+    }
     
 </script>
 </html>
