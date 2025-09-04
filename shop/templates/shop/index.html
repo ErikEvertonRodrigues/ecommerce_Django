@@ -94,13 +94,13 @@
     function DisplayCart(cart) {
         if (Object.keys(cart).length !== 0) {
             let cartString = "";
-            cartString += ""
             let cartIndex = 1;
             for (let x in cart) {
                 cartString += cartIndex + " - ";
                 cartString += document.getElementById("nm"+x).innerHTML + " Qty:" + cart[x] + "</br>";
                 cartIndex++;
             }
+            cartString += "<a class='p-1.5 rounded-md bg-amber-400' href='/checkout'>Checkout</a>"
             document.getElementById("popover-text").innerHTML = cartString;
         }
     }
